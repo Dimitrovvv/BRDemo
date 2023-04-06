@@ -1,0 +1,26 @@
+﻿@model ProductViewModel
+
+<h3>Edit product</h3>
+
+<form asp-controller="Products" asp-action="Edit">
+    <label class="col-form-label" asp-for="Name"></label>
+    <input class="form-control" asp-for="Name" />
+    <input hidden asp-for="Id" />
+    <div>
+        <button class="btn btn-primary">Edit products</button>
+        <button type="button" onclick="deleteProduct" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete-modal">Delete</button>
+    </div>
+</form>
+<script>
+    const deleteProduct = () => {
+        fetch('/Home/Delete?productId=' + @Model.Id)
+            .then(() => redirectToIndex()
+                .catch((error) => {
+                    console.error('Error:', error);
+                }));
+    }
+
+    const redirectToIndex = () => {
+        window.location = "/Home/Index";
+    }
+</script>

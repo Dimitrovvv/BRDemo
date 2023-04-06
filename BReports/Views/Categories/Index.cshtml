@@ -1,0 +1,29 @@
+﻿@model List<CategoryViewModel>
+
+    <h2>Maybe you want to <a href="/Categories/Create">add a category</a></h2>
+@{
+    ViewBag.Title = "All categories";
+}
+
+<h1>All categories</h1>
+
+<a class="btn btn-outline-indigo my-2" href="/Categories/Create">add a category</a>
+
+@if (Model == null)
+{
+        <h2>no available categories at the moment</h2>
+
+}
+else
+{
+    @foreach (var category in Model)
+    {
+                <div class="card">
+                    <div class="card-body">
+                    
+                        <div>@category.Name</div>
+                    </div>
+                </div>
+
+    }
+}

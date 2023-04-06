@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ApplicationUser>
+
+@{
+    ViewBag.Title = "Users";
+}
+
+<h2>Users list:</h2>
+
+@if (Model.Any())
+{
+       @foreach (var user in Model)
+    {
+          <div class="card">
+            <div class="card-body">
+                <div>@user.Id</div>
+                <div>@user.UserName</div>
+                <div>@user.FirstName</div>
+                <div>@user.FirstName</div>
+                <div>@user.LastName</div>
+                <div>@user.BankId</div>
+                <div>@user.Location</div>
+                <div>@user.Role</div>
+            </div>
+        </div>
+    }
+  
+}
+else 
+{
+    <h3>No users available</h3>
+
+}

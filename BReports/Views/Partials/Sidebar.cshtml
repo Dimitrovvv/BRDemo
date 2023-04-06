@@ -1,0 +1,81 @@
+﻿<div class="sidebar sidebar-dark sidebar-main sidebar-expand-lg">
+    <div class="sidebar-content">
+        <div class="sidebar-section">
+            <div class="sidebar-section-body d-flex justify-content-center">
+                <h5 class="sidebar-resize-hide flex-grow-1 my-auto">Navigation</h5>
+                <div>
+                    <button type="button" class="btn btn-flat-white btn-icon btn-sm rounded-pill border-transparent sidebar-control sidebar-main-resize d-none d-lg-inline-flex">
+                        <i class="ph-arrows-left-right"></i>
+                    </button>
+                    <button type="button" class="btn btn-flat-white btn-icon btn-sm rounded-pill border-transparent sidebar-mobile-main-toggle d-lg-none">
+                        <i class="ph-x"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-section">
+            <ul class="nav nav-sidebar" data-nav-type="accordion">
+                <li class="nav-item nav-item-submenu">
+                    <a class="nav-link align-items-center" asp-area="" asp-controller="Users" asp-action="Index">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-people-fill" viewBox="0 0 16 16">
+                            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+                        </svg>
+                        <h4 class="pl-2 mb-0">Users</h4>
+                    </a>
+                </li>
+                  <li class="nav-item nav-item-submenu">
+                    <a asp-area="" asp-controller="Products" asp-action="Index" class="nav-link align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-box" viewBox="0 0 16 16">
+                            <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5 8.186 1.113zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z" />
+                        </svg>
+                        <h4 class="pl-2 mb-0">Products</h4>
+                    </a>
+                </li>
+                 <li class="nav-item nav-item-submenu">
+                    <a asp-area="" asp-controller="Categories" asp-action="Index" class="nav-link align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-card-list" viewBox="0 0 16 16">
+                            <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+                            <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+                        </svg>
+                        <h4 class="pl-2 mb-0">Categories</h4>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-submenu">
+                    <a asp-area="" asp-controller="Locations" asp-action="Index" class="nav-link align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-geo-alt" viewBox="0 0 16 16">
+  <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+  <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+</svg>
+                        <h4 class="pl-2 mb-0">Locations</h4>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-submenu">
+                    <a asp-area="" asp-controller="Sales" asp-action="Index" class="nav-link align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-graph-up-arrow" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"/>
+</svg>
+                        <h4 class="pl-2 mb-0">Sales</h4>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-submenu">
+                    <a asp-area="" asp-controller="Roles" asp-action="Index" class="nav-link align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-file-person" viewBox="0 0 16 16">
+                            <path d="M12 1a1 1 0 0 1 1 1v10.755S12 11 8 11s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z" />
+                            <path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                        </svg>
+                        <h4 class="pl-2 mb-0">Roles</h4>
+                    </a>
+                </li>
+                  <li class="nav-item nav-item-submenu">
+                    <a asp-area="" asp-controller="Reports" asp-action="Index" class="nav-link align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-bar-chart" viewBox="0 0 16 16">
+                            <path d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z" />
+                        </svg>
+                        <h4 class="pl-2 mb-0">Reports</h4>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
