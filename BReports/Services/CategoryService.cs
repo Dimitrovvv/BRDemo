@@ -53,9 +53,6 @@ namespace BReports.Services
             this.db.SaveChanges();
         }
 
-        public void Create(IActionResult actionResult)
-        {
-            throw new System.NotImplementedException();
-        }
+      
     }
 }

@@ -4,6 +4,6 @@ namespace BReports.Services
 {
     public interface IProductRepository : IRepository<Product>
     {
-        void changeSomething(Product product);
+     //   void changeSomething(Product product);
     }
 }

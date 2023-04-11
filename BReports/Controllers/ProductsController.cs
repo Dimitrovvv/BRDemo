@@ -3,6 +3,7 @@ using BReports.Models.ViewModels;
 using BReports.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,11 +11,13 @@ namespace BReports.Controllers
 {
     public class ProductsController : Controller
     {
-        private readonly IProductService productService;
+        private readonly IProductRepository productService;
+        private readonly ICategoryRepository categoryService;
 
-        public ProductsController(IProductService productService)
+        public ProductsController(IProductRepository productService, ICategoryRepository categoryService)
         {
             this.productService = productService;
+            this.categoryService = categoryService;
         }
                        
         public IActionResult Index()
@@ -39,12 +42,30 @@ namespace BReports.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            var categoriesData = categoryService.GetAll();
+            var model = new ProductViewModel();
+            model.CategoriesList = new List<SelectListItem>();
+
+            foreach (var category in categoriesData)
+            {
+                model.CategoriesList.Add(new SelectListItem { Text = category.Name, Value = category.Id.ToString() });
+            }
+            return View(model);
+        
         }
 
         [HttpPost]
          public IActionResult Create(ProductViewModel product)
         {
+            var categoriesData = categoryService.GetAll();
+            var model = new ProductViewModel();
+            model.CategoriesList = new List<SelectListItem>();
+
+            foreach (var category in categoriesData)
+            {
+                model.CategoriesList.Add(new SelectListItem { Text = category.Name, Value = category.Id.ToString() });
+            }
+          
             this.productService.Create(GetProductDataModel(product));
             return RedirectToAction("Index");
         }
@@ -64,19 +85,25 @@ namespace BReports.Controllers
 
         private Product GetProductDataModel(ProductViewModel product)
         {
+         
+
             return new Product
             {
                 Id = product.Id,
-                Name = product.Name
+                Name = product.Name,
+                
+
             };
         }
 
         private ProductViewModel GetProductViewModel(Product product)
         {
+          
             return new ProductViewModel
             {
                 Id = product.Id,
-                Name = product.Name
+                Name = product.Name,
+            
             };
         }
         private List<ProductViewModel> GetProductViewModel(List<Product> source)

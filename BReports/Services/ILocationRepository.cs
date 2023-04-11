@@ -2,7 +2,7 @@
 
 namespace BReports.Services
 {
-    public interface ISaleRepository : IRepository<Sale>
+    public interface ILocationRepository : IRepository<Location>
     {
 
     }

@@ -1,5 +1,7 @@
 ﻿using BReports.Models.DBModels;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using System.Collections.Generic;
 
 namespace BReports.Models.ViewModels
 {
@@ -15,5 +17,10 @@ namespace BReports.Models.ViewModels
         public DateTime SaleDate { get; set; }
 
         public bool IsDeleted { get; set; }
+
+        public List<SelectListItem> ProductsList {get; set;}
+
+        public List<SelectListItem> CategoriesList { get; set;}
+    
     }
 }

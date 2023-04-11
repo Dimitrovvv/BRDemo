@@ -1,0 +1,17 @@
+﻿@model SaleViewModel
+
+<h2>Maybe you want to <a href="/Sales/Create">add a sale</a></h2>
+@{
+    ViewBag.Title = "All sales";
+}
+<div class="mb-3">
+    <label class="form-label">Select product</label>
+    <select class="form-select" asp-items="Model.ProductsList"></select>
+</div>
+<div class="mb-3">
+    <label class="form-label">Select category</label>
+    <select class="form-select" asp-items="Model.CategoriesList"></select>
+</div>
+
+
+

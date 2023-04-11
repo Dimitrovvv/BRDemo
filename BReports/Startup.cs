@@ -34,11 +34,13 @@ namespace BReports
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddTransient<ICategoryRepository, CategoryService>();
+            services.AddTransient<IProductRepository, ProductService>();
+            services.AddTransient<ISaleRepository, SaleService>();
+            services.AddTransient<ILocationRepository, LocationService>();
             services.AddControllersWithViews();
             services.AddRazorPages();
-            //  services.AddTransient<IProductService, ProductService>();
-             services.AddTransient<ICategoryRepository, CategoryService>();
-            services.AddTransient<IProductRepository, ProductService>();
+           
 
           
         }

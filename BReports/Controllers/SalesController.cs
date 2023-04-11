@@ -1,14 +1,50 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BReports.Models.DBModels;
+using BReports.Models.ViewModels;
+using BReports.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
 
 namespace BReports.Controllers
 {
     public class SalesController : Controller
     {
-        // GET: SalesController
-        public ActionResult Index()
+        private readonly ISaleRepository saleService;
+        private readonly IProductRepository productService;
+        private readonly ICategoryRepository categoryService;
+        public SalesController(ISaleRepository saleService, IProductRepository productService, ICategoryRepository categoryService)
         {
-            return View();
+            this.saleService = saleService;
+            this.productService = productService;
+            this.categoryService = categoryService;
+        }
+   
+        // GET: SalesController
+        public IActionResult Index()
+        {
+            var productsData = productService.GetAll();
+            var categoriesData = categoryService.GetAll();
+            var model = new SaleViewModel();
+            model.ProductsList = new List<SelectListItem>();
+            model.CategoriesList = new List<SelectListItem>();
+
+            foreach (var product in productsData)
+            {
+                model.ProductsList.Add(new SelectListItem { Text = product.Name, Value = product.Id.ToString()});
+            }
+            foreach (var category in categoriesData)
+            {
+                model.CategoriesList.Add(new SelectListItem { Text = category.Name, Value = category.Id.ToString() });
+
+            }
+            if (model.ProductsList == null)
+            { 
+            
+            }
+            return View(model);
+
+
         }
 
         // GET: SalesController/Details/5

@@ -217,3 +217,9 @@ D:\Reskill Projects\BReports\BReports\obj\Debug\netcoreapp3.1\Razor\Views\Shared
 D:\Reskill Projects\BReports\BReports\obj\Debug\netcoreapp3.1\Razor\Views\Categories\Create.cshtml.g.cs
 D:\Reskill Projects\BReports\BReports\obj\Debug\netcoreapp3.1\Razor\Views\Categories\Edit.cshtml.g.cs
 D:\Reskill Projects\BReports\BReports\obj\Debug\netcoreapp3.1\Razor\Views\Categories\Index.cshtml.g.cs
+D:\Reskill Projects\BReports\BReports\obj\Debug\netcoreapp3.1\Razor\Views\Sales\Create.cshtml.g.cs
+D:\Reskill Projects\BReports\BReports\obj\Debug\netcoreapp3.1\Razor\Views\Sales\Edit.cshtml.g.cs
+D:\Reskill Projects\BReports\BReports\obj\Debug\netcoreapp3.1\Razor\Views\Sales\Index.cshtml.g.cs
+D:\Reskill Projects\BReports\BReports\obj\Debug\netcoreapp3.1\Razor\Views\Locations\Index.cshtml.g.cs
+D:\Reskill Projects\BReports\BReports\obj\Debug\netcoreapp3.1\Razor\Views\Locations\Edit.cshtml.g.cs
+D:\Reskill Projects\BReports\BReports\obj\Debug\netcoreapp3.1\Razor\Views\Locations\Create.cshtml.g.cs

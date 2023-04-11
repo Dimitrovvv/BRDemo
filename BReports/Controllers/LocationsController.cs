@@ -1,14 +1,27 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BReports.Models.DBModels;
+using BReports.Models.ViewModels;
+using BReports.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace BReports.Controllers
 {
     public class LocationsController : Controller
     {
-        // GET: LocationsController
-        public ActionResult Index()
+        private readonly ILocationRepository locationService;
+
+        public LocationsController(ILocationRepository locationService)
         {
-            return View();
+            this.locationService = locationService;
+        }
+
+
+        // GET: LocationsController
+        public IActionResult Index()
+        {
+            var locations = this.locationService.GetAll();
+            return View(GetLocationViewModel(locations));
         }
 
         // GET: LocationsController/Details/5
@@ -25,17 +38,11 @@ namespace BReports.Controllers
 
         // POST: LocationsController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+      
+        public IActionResult Create(Location location)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            this.locationService.Create(location);
+            return RedirectToAction("Index");
         }
 
         // GET: LocationsController/Edit/5
@@ -78,6 +85,37 @@ namespace BReports.Controllers
             {
                 return View();
             }
+        }
+
+        private Location GetLocationDataModel(LocationViewModel location)
+        {
+            return new Location
+            {
+                Id = location.Id,
+                Name = location.Name,
+                Region= location.Region
+            };
+        }
+
+        private LocationViewModel GetLocationViewModel(Location location)
+        {
+            return new LocationViewModel
+            {
+                Id = location.Id,
+                Name = location.Name,
+                Region= location.Region
+            };
+        }
+        private List<LocationViewModel> GetLocationViewModel(List<Location> source)
+        {
+            var locations = new List<LocationViewModel>();
+
+            foreach (var loc in source)
+            {
+                locations.Add(GetLocationViewModel(loc));
+            }
+
+            return locations;
         }
     }
 }

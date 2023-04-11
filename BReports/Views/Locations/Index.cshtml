@@ -1,0 +1,28 @@
+﻿@model List<LocationViewModel>
+
+<a class="btn btn-info my-3" href="/Locations/Create">Добави локация</a>
+@{
+    ViewBag.Title = "All locations";
+}
+
+<h1>Локации</h1>
+
+
+@if (Model == null)
+{
+    <h2>no available locations at the moment</h2>
+
+}
+else
+{
+    @foreach (var location in Model)
+    {
+        <div class="card">
+            <div class="card-body">
+                <div>Регион: @location.Region</div>
+                <div>Офис: @location.Name</div>
+            </div>
+        </div>
+
+    }
+}
