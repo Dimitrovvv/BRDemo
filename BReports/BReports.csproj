@@ -8,10 +8,12 @@
   <ItemGroup>
     <Compile Remove="Data\Migrations\20230319110614_Add_Category_Location_Product_Sale.Models.cs" />
     <Compile Remove="Data\Migrations\20230319110614_Add_Category_Location_Product_Sale.Models.Designer.cs" />
+    <Compile Remove="Data\Migrations\20230413174114_tables-fix-updates.cs" />
+    <Compile Remove="Data\Migrations\20230413174114_tables-fix-updates.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.30" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.32" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.32" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.32" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.32" />

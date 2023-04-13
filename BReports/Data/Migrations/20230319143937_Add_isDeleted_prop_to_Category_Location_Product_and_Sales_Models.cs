@@ -9,26 +9,22 @@ namespace BReports.Data.Migrations
             migrationBuilder.AddColumn<bool>(
                 name: "IsDeleted",
                 table: "Sales",
-                nullable: false,
-                defaultValue: false);
+                nullable: true);
 
             migrationBuilder.AddColumn<bool>(
                 name: "IsDeleted",
                 table: "Products",
-                nullable: false,
-                defaultValue: false);
+                nullable: true);
 
             migrationBuilder.AddColumn<bool>(
                 name: "IsDeleted",
                 table: "Locations",
-                nullable: false,
-                defaultValue: false);
+                nullable: true);
 
             migrationBuilder.AddColumn<bool>(
                 name: "IsDeleted",
                 table: "Categories",
-                nullable: false,
-                defaultValue: false);
+                nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

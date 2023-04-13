@@ -31,10 +31,10 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/3.1.30": {
+      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/3.1.32": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Relational": "3.1.30"
+          "Microsoft.EntityFrameworkCore.Relational": "3.1.32"
         },
         "compile": {
           "lib/netcoreapp3.1/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {
@@ -3108,10 +3108,10 @@
         "microsoft.aspnetcore.cryptography.keyderivation.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/3.1.30": {
-      "sha512": "Iu9Cnbrj4HgQt0jQzncKCA8yWYJidsSrK0EqpmEwxAhrlwJagV60IZvQRVWYiW11enXQ1QJf8HjbY3dVH1JlVw==",
+    "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/3.1.32": {
+      "sha512": "z6E3nvKomDXUpw7n3fjK1iavyFNOdlKxCcXtkgXN+1n7aym9I/FWjVq8fzPP8VgQ1NuTTrJs/ipXhYGcGc4Elg==",
       "type": "package",
-      "path": "microsoft.aspnetcore.diagnostics.entityframeworkcore/3.1.30",
+      "path": "microsoft.aspnetcore.diagnostics.entityframeworkcore/3.1.32",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3119,7 +3119,7 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netcoreapp3.1/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll",
         "lib/netcoreapp3.1/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.xml",
-        "microsoft.aspnetcore.diagnostics.entityframeworkcore.3.1.30.nupkg.sha512",
+        "microsoft.aspnetcore.diagnostics.entityframeworkcore.3.1.32.nupkg.sha512",
         "microsoft.aspnetcore.diagnostics.entityframeworkcore.nuspec"
       ]
     },
@@ -9189,7 +9189,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 3.1.30",
+      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 3.1.32",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 3.1.32",
       "Microsoft.AspNetCore.Identity.UI >= 3.1.32",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.32",
@@ -9238,7 +9238,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
             "target": "Package",
-            "version": "[3.1.30, )"
+            "version": "[3.1.32, )"
           },
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",

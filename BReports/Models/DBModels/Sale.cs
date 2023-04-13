@@ -13,6 +13,9 @@ namespace BReports.Models.DBModels
         public string CustomerId { get; set; } 
         public DateTime SaleDate { get; set; }
         public bool IsDeleted { get; set; }
+   
+
+
 
     }
 }
