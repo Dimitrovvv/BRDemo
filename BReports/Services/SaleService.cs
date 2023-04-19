@@ -15,7 +15,10 @@ namespace BReports.Services
         }
         public List<Sale> GetAll()
         {
-            return this.db.Sales.ToList();
+            return this.db.Sales
+                .Where(sale => !sale.IsDeleted)
+                .OrderByDescending(x => x.Id)
+                .ToList();
         }
 
         public Sale GetById(int id)

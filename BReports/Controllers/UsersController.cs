@@ -1,8 +1,12 @@
 ﻿using BReports.Models.DBModels;
 using BReports.Models.ViewModels;
+using BReports.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BReports.Controllers
@@ -11,101 +15,137 @@ namespace BReports.Controllers
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
-        
+        private readonly ILocationRepository locationService;
+
 
         public UsersController(
             UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager
+            SignInManager<ApplicationUser> signInManager,
+            ILocationRepository locationService
             )
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
-                    
+            this.locationService = locationService;
+
         }
 
-        // GET: ApplicationUsersController
-        public ActionResult Index()
+        public IActionResult Index()
         {
             var users = userManager.Users;
             return View(users);
         }
 
-        // GET: ApplicationUsersController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: ApplicationUsersController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: ApplicationUsersController/Create
         [HttpPost]
         public async Task<IActionResult> Create(UserViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser
+                ApplicationUser user = new ApplicationUser
                 {
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     BankId = model.BankId,
                     Location = model.Location,
                 };
-                var result = await userManager.CreateAsync(user, model.Password);
+
+                IdentityResult result = await userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
-                { 
-                await signInManager.SignInAsync(user, isPersistent: false);
+                {
+                    await signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
-                
+
             }
-            return View(model); 
+            return View(model);
         }
-
-        // GET: ApplicationUsersController/Edit/5
-        public ActionResult Edit(int id)
+        [HttpGet]
+        public async Task<IActionResult> Edit(string id)
         {
-            return View();
+
+            var user = await userManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = $"User Id {id} cannot be found";
+                return View("Not found");
+            }
+            var model = new UserViewModel
+
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                BankId = user.BankId,
+                Location = user.Location,
+            };
+            model.LocationList = new List<SelectListItem>();
+            var locationsData = locationService.GetAll();
+            foreach (var location in locationsData)
+            {
+                model.LocationList.Add(new SelectListItem { Text = location.Name, Value = location.Name });
+            };
+            return View(model);
         }
 
-        // POST: ApplicationUsersController/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(UserViewModel model)
         {
-            try
+            var user = await userManager.FindByIdAsync(model.Id);
+            if (user == null)
             {
-                return RedirectToAction(nameof(Index));
+                ViewBag.ErrorMessage = $"User Id {model.Id} cannot be found";
+                return View("Not found");
             }
-            catch
+            else
             {
-                return View();
-            }
-        }
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+                user.BankId = model.BankId;
+                user.Location = model.Location;
+                var result = await userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");
 
-        // GET: ApplicationUsersController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+                }
+                return View(model);
+            };
 
-        // POST: ApplicationUsersController/Delete/5
+
+        }
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> Delete(string id)
         {
-            try
+            var user = await userManager.FindByIdAsync(id);
+
+            if (user == null)
             {
-                return RedirectToAction(nameof(Index));
+                ViewBag.ErrorMessage = $"User Id {id} cannot be found";
+                return View("NotFound");
             }
-            catch
+            else
             {
-                return View();
+
+                var result = await userManager.DeleteAsync(user);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+                foreach (var error in result.Errors)
+                { ModelState.AddModelError("", error.Description); }
+                return View("Index");
             }
         }
     }
 }
+
+

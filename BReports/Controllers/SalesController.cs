@@ -4,6 +4,7 @@ using BReports.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 
 namespace BReports.Controllers
@@ -19,70 +20,52 @@ namespace BReports.Controllers
             this.productService = productService;
             this.categoryService = categoryService;
         }
-   
-        // GET: SalesController
+
         public IActionResult Index()
         {
-            var productsData = productService.GetAll();
-            var categoriesData = categoryService.GetAll();
+            var sales = this.saleService.GetAll();
+            var model = new SaleViewModelList
+            {
+                List = GetSaleViewModel(sales)
+
+            };
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
             var model = new SaleViewModel();
+            var categoriesData = categoryService.GetAll();
+            var productsData = productService.GetAll();
+
             model.ProductsList = new List<SelectListItem>();
             model.CategoriesList = new List<SelectListItem>();
 
-            foreach (var product in productsData)
-            {
-                model.ProductsList.Add(new SelectListItem { Text = product.Name, Value = product.Id.ToString()});
-            }
             foreach (var category in categoriesData)
             {
                 model.CategoriesList.Add(new SelectListItem { Text = category.Name, Value = category.Id.ToString() });
-
             }
-            if (model.ProductsList == null)
-            { 
-            
+            foreach (var product in productsData)
+            {
+                model.ProductsList.Add(new SelectListItem { Text = product.Name, Value = product.Id.ToString() });
             }
             return View(model);
-
-
         }
 
-        // GET: SalesController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: SalesController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: SalesController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(SaleViewModel sale)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            this.saleService.Create(GetSaleDataModel(sale));
+            return RedirectToAction("Index");
         }
 
-        // GET: SalesController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: SalesController/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
         {
             try
@@ -95,25 +78,48 @@ namespace BReports.Controllers
             }
         }
 
-        // GET: SalesController/Delete/5
-        public ActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
-            return View();
+            this.saleService.Delete(id);
+            return RedirectToAction("Index");
+        }
+        private Sale GetSaleDataModel(SaleViewModel sale)
+        {
+            return new Sale
+            {
+                Id = sale.Id,
+                Product = sale.Product,
+                SoldBy = sale.User,
+                CustomerId = sale.CustomerId,
+                Description = sale.Description,
+                Amount = sale.Amount,
+                SaleDate = DateTime.Now
+            };
         }
 
-        // POST: SalesController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        private SaleViewModel GetSaleViewModel(Sale sale)
         {
-            try
+
+            return new SaleViewModel
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
+                Id = sale.Id,
+                Product = sale.Product,
+                User = sale.SoldBy,
+                CustomerId = sale.CustomerId,
+                Description = sale.Description,
+                Amount = sale.Amount,
+                SaleDate = sale.SaleDate
+            };
+        }
+        private List<SaleViewModel> GetSaleViewModel(List<Sale> source)
+        {
+            var sales = new List<SaleViewModel>();
+
+            foreach (var element in source)
             {
-                return View();
+                sales.Add(GetSaleViewModel(element));
             }
+            return sales;
         }
     }
 }

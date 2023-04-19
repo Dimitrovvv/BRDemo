@@ -1,17 +1,35 @@
 ﻿@model SaleViewModel
 
-<h2>Maybe you want to <a href="/Sales/Create">add a sale</a></h2>
-@{
-    ViewBag.Title = "All sales";
-}
-<div class="mb-3">
-    <label class="form-label">Select product</label>
-    <select class="form-select" asp-items="Model.ProductsList"></select>
-</div>
-<div class="mb-3">
-    <label class="form-label">Select category</label>
-    <select class="form-select" asp-items="Model.CategoriesList"></select>
-</div>
+<h3 class="mb-5">Добави продажба</h3>
+<form method="post" asp-controller="Sales" asp-action="Create">
+      <div class="mb-3">
+        <label class="form-label">Select category</label>
+        <select class="form-control" asp-items="Model.CategoriesList" asp-for="Category"></select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Select product</label>
+        <select class="form-control" asp-items="Model.ProductsList" asp-for="Product"></select>
+    </div>
+    <div class="mb-3">
+        <label class="col-form-label" asp-for="Amount"></label>
+        <input class="form-control" asp-for="Amount" />
+    </div>
+    <div class="mb-3">
+        <label class="col-form-label" asp-for="Description"></label>
+        <input class="form-control" asp-for="Description" />
+    </div>
+    <div class="mb-3">
+        <label class="col-form-label" asp-for="CustomerId"></label>
+        <input class="form-control" asp-for="CustomerId" />
+    </div>
+    <div class="mb-3">
+        <label class="col-form-label" asp-for="SaleDate"></label>
+        <input type="date" class="form-control" asp-for="SaleDate" asp-format="{0:yyyy-MM-ddTHH:mm}" value="@DateTime.Now" />
+    </div>
+    <button class="btn btn-primary mt-3">Запиши</button>
+</form>
+
+
 
 
 

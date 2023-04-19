@@ -223,3 +223,5 @@ D:\Reskill Projects\BReports\BReports\obj\Release\netcoreapp3.1\BReports.csproj.
 D:\Reskill Projects\BReports\BReports\obj\Release\netcoreapp3.1\BReports.dll
 D:\Reskill Projects\BReports\BReports\obj\Release\netcoreapp3.1\BReports.pdb
 D:\Reskill Projects\BReports\BReports\obj\Release\netcoreapp3.1\BReports.genruntimeconfig.cache
+D:\Reskill Projects\BReports\BReports\obj\Release\netcoreapp3.1\Razor\Views\Users\Create.cshtml.g.cs
+D:\Reskill Projects\BReports\BReports\obj\Release\netcoreapp3.1\Razor\Views\Users\Edit.cshtml.g.cs

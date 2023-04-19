@@ -4,6 +4,7 @@ using BReports.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -33,9 +34,9 @@ namespace BReports.Controllers
 
         }
            
-        public IActionResult Details(int productid)
+        public IActionResult ProductDetails(int productId)
         {
-            var productDataModel = this.productService.GetById(productid);
+            var productDataModel = this.productService.GetById(productId);
             return View(GetProductViewModel(productDataModel));
         }
 
@@ -57,53 +58,57 @@ namespace BReports.Controllers
         [HttpPost]
          public IActionResult Create(ProductViewModel product)
         {
-            var categoriesData = categoryService.GetAll();
-            var model = new ProductViewModel();
-            model.CategoriesList = new List<SelectListItem>();
-
-            foreach (var category in categoriesData)
-            {
-                model.CategoriesList.Add(new SelectListItem { Text = category.Name, Value = category.Id.ToString() });
-            }
-          
             this.productService.Create(GetProductDataModel(product));
             return RedirectToAction("Index");
         }
-
-        public IActionResult Edit(ProductViewModel product)
+        [HttpGet]
+        public IActionResult Edit(int productId)
         {
-            this.productService.Update(GetProductDataModel(product));
-            return RedirectToAction("Index");
+            var productDataModel = this.productService.GetById(productId);
+
+            return View(GetProductViewModel(productDataModel));
         }
 
-        public IActionResult Delete(int productId)
+        [HttpPost]
+        public IActionResult Edit(ProductViewModel model)
         {
-            this.productService.Delete(productId);
-            return Ok();
+            Product productDataModel = this.productService.GetById(model.Id);
+
+            if (productDataModel == null)
+            {
+                return NotFound();
+            }
+
+            ProductViewModel productViewModel = GetProductViewModel(productDataModel);
+
+            return View(productViewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            this.productService.Delete(id);
+            return RedirectToAction("Index");
    
         }
 
         private Product GetProductDataModel(ProductViewModel product)
         {
-         
-
             return new Product
             {
                 Id = product.Id,
                 Name = product.Name,
-                
-
+                Category = product.Category
             };
         }
 
         private ProductViewModel GetProductViewModel(Product product)
         {
-          
             return new ProductViewModel
             {
                 Id = product.Id,
                 Name = product.Name,
-            
+                Category = product.Category
             };
         }
         private List<ProductViewModel> GetProductViewModel(List<Product> source)

@@ -16,7 +16,7 @@ namespace BReports.Services
         }
         public List<Category> GetAll()
         {
-            return this.db.Categories.ToList();
+            return this.db.Categories.Where(category => !category.IsDeleted).ToList();
         }
 
         public Category GetById(int id)
@@ -52,7 +52,5 @@ namespace BReports.Services
             categoryToDelete.IsDeleted = true;
             this.db.SaveChanges();
         }
-
-      
     }
 }

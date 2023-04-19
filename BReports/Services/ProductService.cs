@@ -16,7 +16,7 @@ namespace BReports.Services
         }
         public List<Product> GetAll()
         {
-            return this.db.Products.ToList();
+            return this.db.Products.Where(product => !product.IsDeleted).ToList();
         }
 
         public Product GetById(int id)
@@ -40,6 +40,7 @@ namespace BReports.Services
             if (productToUpdate == null) { return; }
 
             productToUpdate.Name = product.Name;
+            productToUpdate.Category = product.Category;
 
             this.db.SaveChanges();
 
@@ -52,10 +53,6 @@ namespace BReports.Services
             productToDelete.IsDeleted = true;
             this.db.SaveChanges();
         }
-
-        public void changeSomething(Product product)
-        {
-            throw new System.NotImplementedException();
-        }
+              
     }
 }

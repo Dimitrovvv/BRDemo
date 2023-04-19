@@ -63,39 +63,46 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
+  
 }
 
 .footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     white-space: nowrap;
-    line-height: 60px; /* Vertically center the text there */
+    line-height: 60px;
+    margin-top: 60px;
+    background-color: #52ae30;
+    text-align: center;
 }
 
-.main-container {
-    /* background-image: url("https://cdn.pixabay.com/photo/2020/08/09/14/25/business-5475664_960_720.jpg"); */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 85vh;
+.inner-footer {
+    color: #fff;
 }
 
-.main-content-wrapper {
-    background: rgba(255, 255, 255, 0.4);
-    padding: 30px;
-    border-radius: 10px;
-}
+
+
+
 
 body {
-    background-color: white;
-    color: black;
+    background-color: #FFF;
+    color: #111;
 }
 
+    body * {
+        color: #111;
+    }
+
 .dark-mode {
-    background-color: black;
-    color: white;
+    background-color: #262626;
+    color: #FFF;
 }
+
+    .dark-mode * {
+        color: #FFF !important;
+    }
+
 
 .switch {
     position: relative;
@@ -158,5 +165,60 @@ input:checked + .slider:before {
     }
 
 .logo {
-width: 110px;
+    width: 110px;
+}
+
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+
+.sidenav {
+    flex-flow: column;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transition: 0.5s;
+    padding-top: 10px;
+    padding-left: 15px;
+}
+
+    .sidenav a {
+        text-decoration: none;
+        color: #818181;
+        transition: 0.3s;
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+    }
+
+        .sidenav a h4 {
+            font-size: 20px;
+        }
+
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+.card {
+    border-color: #ccc;
+}
+
+footer {
 }

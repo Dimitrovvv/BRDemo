@@ -1,28 +1,57 @@
 ﻿@model List<LocationViewModel>
 
-<a class="btn btn-info my-3" href="/Locations/Create">Добави локация</a>
-@{
-    ViewBag.Title = "All locations";
-}
-
-<h1>Локации</h1>
-
-
+<h2>Офиси</h2>
+<a class="btn btn-info my-3" href="/Locations/Create">Добави офис</a>
 @if (Model == null)
 {
-    <h2>no available locations at the moment</h2>
-
+    <h3>Няма налични офиси</h3>
 }
 else
 {
-    @foreach (var location in Model)
-    {
-        <div class="card">
-            <div class="card-body">
-                <div>Регион: @location.Region</div>
-                <div>Офис: @location.Name</div>
-            </div>
-        </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Office</th>
+                <th scope="col">Region</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var location in Model)
+            {
 
-    }
+                <tr>
+                    <th> @location.Name</th>
+                    <th> @location.Region</th>
+                    <th>
+                        <a class="btn btn-info" asp-action="Edit" asp-controller="Locations" asp-route-id="@location.Id">Редактирай</a>
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#deleteLocation">
+                            Изтрий
+                        </button>
+                    </th>
+                </tr>
+                <div class="modal fade" id="deletelocation" tabindex="-1" role="dialog" aria-labelledby="Location" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="User">Изтрий офис</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Сигурни ли сте, че желаете да изтриете офиса?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Откажи</button>
+                                <form asp-action="Delete" asp-route-id="@location.Id" method="post">
+                                    <button type="submit" class="btn btn-danger" asp-action="Delete" asp-controller="Locations" asp-route-id="@location.Id">Изтрий</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </tbody>
+    </table>
 }

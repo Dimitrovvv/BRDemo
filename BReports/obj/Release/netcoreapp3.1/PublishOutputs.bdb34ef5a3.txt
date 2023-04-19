@@ -4,7 +4,6 @@ D:\Reskill Projects\BReports\BReports\obj\Release\netcoreapp3.1\PubTmp\Out\wwwro
 D:\Reskill Projects\BReports\BReports\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\BReports-for-dark-bg-small.svg
 D:\Reskill Projects\BReports\BReports\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\BReports-for-light-bg-big.svg
 D:\Reskill Projects\BReports\BReports\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\BReports-for-light-bg-small.svg
-D:\Reskill Projects\BReports\BReports\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\css\all.min.css
 D:\Reskill Projects\BReports\BReports\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\css\site.css
 D:\Reskill Projects\BReports\BReports\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\favicon.ico
 D:\Reskill Projects\BReports\BReports\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\js\site.js

@@ -38,21 +38,37 @@ namespace BReports.Areas.Identity.Pages.Account.Manage
             public string PhoneNumber { get; set; }
 
             [FirstName]
-            [Display(Name = "First Name")]
+            [Display(Name = "First name")]
             public string FirstName { get; set; }
+
+            [LastName]
+            [Display(Name = "Last name")]
+            public string LastName { get; set; }
+
+
+        
+            [BankId]
+            [Display(Name = "Bank Id")]
+            public string BankId { get; set; }
+
+         
+            [EmailAddress]
+            [Display(Name = "Email")]
+            public string Email { get; set; }
         }
 
         private async Task LoadAsync(ApplicationUser user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-            
+            var email = await _userManager.GetEmailAsync(user);
 
             Username = userName;
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                Email = email
             };
         }
 

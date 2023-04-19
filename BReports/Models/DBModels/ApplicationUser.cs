@@ -13,5 +13,6 @@ namespace BReports.Models.DBModels
         public ICollection<Sale> Sales { get; set; }
 
 
+
     }
 }

@@ -10,6 +10,8 @@
     <Compile Remove="Data\Migrations\20230319110614_Add_Category_Location_Product_Sale.Models.Designer.cs" />
     <Compile Remove="Data\Migrations\20230413174114_tables-fix-updates.cs" />
     <Compile Remove="Data\Migrations\20230413174114_tables-fix-updates.Designer.cs" />
+    <Compile Remove="Data\Migrations\20230419063131_Fix-nullable-issues.cs" />
+    <Compile Remove="Data\Migrations\20230419063131_Fix-nullable-issues.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +24,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Migrations\" />
   </ItemGroup>
 
 </Project>

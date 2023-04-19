@@ -15,7 +15,7 @@ namespace BReports.Services
         }
         public List<Location> GetAll()
         {
-            return this.db.Locations.ToList();
+            return this.db.Locations.Where(location => !location.IsDeleted).ToList();
         }
 
         public Location GetById(int id)

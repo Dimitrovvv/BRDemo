@@ -23,68 +23,36 @@ namespace BReports.Controllers
             return View(GetCategoryViewModel(categories));
         }
 
-        // GET: CategoriesController/Details/5
         public IActionResult Details(int id)
         {
             return View();
         }
-
-        // GET: CategoriesController/Create
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: CategoriesController/Create
         [HttpPost]
-   
-        public IActionResult Create(Category category)
+        public IActionResult Create(CategoryViewModel category)
         {
-            this.categoryService.Create(category);
+            this.categoryService.Create(GetCategoryDataModel(category));
             return RedirectToAction("Index");
             
         }
-
-        // GET: CategoriesController/Edit/5
-        public IActionResult Edit(int id)
+      
+        public IActionResult Edit(CategoryViewModel category)
         {
-            return View();
+            this.categoryService.Update(GetCategoryDataModel(category));
+            return RedirectToAction("Index");
         }
 
-        // POST: CategoriesController/Edit/5
-        [HttpPost]
-   
-        public IActionResult Edit(int id, IFormCollection collection)
+       
+        public IActionResult Delete(int Id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+            this.categoryService.Delete(Id);
+            return RedirectToAction("Index");
 
-        // GET: CategoriesController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: CategoriesController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
 
         private Category GetCategoryDataModel(CategoryViewModel category)
@@ -112,12 +80,7 @@ namespace BReports.Controllers
             {
                 categories.Add(GetCategoryViewModel(c));
             }
-
             return categories;
         }
-
-
-
-
     }
 }

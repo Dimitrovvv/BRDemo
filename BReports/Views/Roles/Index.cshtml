@@ -1,12 +1,8 @@
 ﻿@model IEnumerable<IdentityRole>
 
-@{
-    ViewBag.Title = "All Roles";
-}
+<h1>Роли</h1>
 
-<h1>All Roles</h1>
-
-<a class="btn btn-outline-indigo my-2" href="/Roles/Create">add a role</a>
+<a class="btn btn-outline-info my-2" href="/Roles/Create">Добави роля</a>
 @if (Model.Any())
 {
 
@@ -17,32 +13,28 @@
                 <h5>@role.Name</h5>
             </div>
             <div class="card-footer">
-                <a class="btn btn-info" asp-action="Edit" asp-controller="Roles" asp-route-id="@role.Id">Edit role</a>
-                <button class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteRole">
-                    Delete role
+                <a class="btn btn-info" asp-action="Edit" asp-controller="Roles" asp-route-id="@role.Id">Редактирай</a>
+                <button class="btn btn-danger" data-toggle="modal" data-target="#deleteRole">
+                    Изтрий
                 </button>
-
-              
-
-               
             </div>
         </div>
         <div class="modal fade" id="deleteRole" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Delete role</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Изтрий ролята</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        Are you sure you want to delete the role?
+                        Сигурни ли сте, че жжелаете да изтриете ролята?
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Откажи</button>
                         <form asp-action="Delete" asp-route-id="@role.Id" method="post">
-                            <button type="submit" class="btn btn-danger" asp-action="Delete" asp-controller="Roles" asp-route-id="@role.Id">Delete role</button>
+                            <button type="submit" class="btn btn-danger" asp-action="Delete" asp-controller="Roles" asp-route-id="@role.Id">Изтрий</button>
                         </form>
                     </div>
                 </div>

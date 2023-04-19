@@ -7,7 +7,6 @@ namespace BReports.Services
     {
         List<T> GetAll();
         int GetCount();
-
         T GetById(int id);
         void Create(T item);
         void Update(T item);

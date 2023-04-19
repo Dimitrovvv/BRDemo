@@ -1,19 +1,71 @@
-﻿@model SaleViewModel
+﻿@model SaleViewModelList
 
-<h2>Maybe you want to <a href="/Sales/Create">add a sale</a></h2>
-@{
-    ViewBag.Title = "All sales";
+
+<h1>Продажби</h1>
+<a class="btn btn-outline-info my-2" href="/Sales/Create">Добави продажба</a>
+
+@if (Model == null)
+{
+    <h3>Няма налични продажби</h3>
+
 }
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Category</th>
+                <th scope="col">Product</th>
+                <th scope="col">Sold by</th>
+                <th scope="col">Customer Id</th>
+                <th scope="col">Description</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Date of sale</th>
+                <th scope="col">Actions</th>
 
-<div class="mb-3">
-    <label class="form-label">Select category</label>
-    <select class="form-select" asp-items="Model.CategoriesList"></select>
-</div>
-
-<div class="mb-3">
-    <label class="form-label">Select product</label>
-    <select class="form-select" asp-items="Model.ProductsList"></select>
-</div>
-
-   
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var sale in Model.List)
+            {
+                <tr>
+                    <th> @sale.Category</th>
+                    <th> @sale.Product</th>
+                    <th> @User.Identity.Name</th>
+                    <th> @sale.CustomerId</th>
+                    <th> @sale.Description</th>
+                    <th> @sale.Amount</th>
+                    <th> @sale.SaleDate</th>
+                    <th>
+                        <a class="btn btn-info" asp-action="Edit" asp-controller="Sales" asp-route-id="@sale.Id">Редактирай</a>
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#deleteSale">
+                            Изтрий
+                        </button>
+                    </th>
+                </tr>
+                <div class="modal fade" id="deleteSale" tabindex="-1" role="dialog" aria-labelledby="Sale" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="Sale">Изтрий продажба</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Сигурни ли сте, че желаете да изтриете продажбата?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Откажи</button>
+                                <form asp-action="Delete" asp-route-id="@sale.Id" method="post">
+                                    <button type="submit" class="btn btn-danger" asp-action="Delete" asp-controller="Sales" asp-route-id="@sale.Id">Изтрий</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </tbody>
+    </table>
+}
 
