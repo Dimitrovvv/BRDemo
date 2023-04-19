@@ -21,7 +21,6 @@ namespace BReports.Services
         public Location GetById(int id)
         {
             return this.db.Locations.FirstOrDefault(x => x.Id == id);
-
         }
 
         public int GetCount()
@@ -39,7 +38,6 @@ namespace BReports.Services
             if (locationToUpdate == null) { return; }
 
             locationToUpdate.Name = location.Name;
-
             this.db.SaveChanges();
 
         }

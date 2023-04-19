@@ -22,7 +22,6 @@ namespace BReports.Services
         public Product GetById(int id)
         {
             return this.db.Products.FirstOrDefault(x => x.Id == id);
-
         }
 
         public int GetCount()
@@ -41,7 +40,6 @@ namespace BReports.Services
 
             productToUpdate.Name = product.Name;
             productToUpdate.Category = product.Category;
-
             this.db.SaveChanges();
 
         }
@@ -53,6 +51,5 @@ namespace BReports.Services
             productToDelete.IsDeleted = true;
             this.db.SaveChanges();
         }
-              
     }
 }

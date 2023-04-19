@@ -6,7 +6,5 @@
         public string Name { get; set; }
         public Category Category { get; set; }
         public bool IsDeleted { get; set; }
-
-
     }
 }

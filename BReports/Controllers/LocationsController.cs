@@ -16,44 +16,30 @@ namespace BReports.Controllers
             this.locationService = locationService;
         }
 
-
-        // GET: LocationsController
         public IActionResult Index()
         {
             var locations = this.locationService.GetAll();
             return View(GetLocationViewModel(locations));
         }
 
-        // GET: LocationsController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: LocationsController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: LocationsController/Create
         [HttpPost]
-      
         public IActionResult Create(Location location)
         {
             this.locationService.Create(location);
             return RedirectToAction("Index");
         }
 
-        // GET: LocationsController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: LocationsController/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
         {
             try
@@ -66,15 +52,12 @@ namespace BReports.Controllers
             }
         }
 
-        // GET: LocationsController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: LocationsController/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {
             try
@@ -93,7 +76,7 @@ namespace BReports.Controllers
             {
                 Id = location.Id,
                 Name = location.Name,
-                Region= location.Region
+                Region = location.Region
             };
         }
 
@@ -103,7 +86,7 @@ namespace BReports.Controllers
             {
                 Id = location.Id,
                 Name = location.Name,
-                Region= location.Region
+                Region = location.Region
             };
         }
         private List<LocationViewModel> GetLocationViewModel(List<Location> source)
@@ -114,7 +97,6 @@ namespace BReports.Controllers
             {
                 locations.Add(GetLocationViewModel(loc));
             }
-
             return locations;
         }
     }

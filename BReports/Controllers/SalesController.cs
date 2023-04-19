@@ -60,22 +60,16 @@ namespace BReports.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Edit(SalesViewModel sale)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            this.saleService.Update(sale);
+            return RedirectToAction("Index");
         }
 
         public IActionResult Delete(int id)

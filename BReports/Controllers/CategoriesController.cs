@@ -15,7 +15,7 @@ namespace BReports.Controllers
 
         public CategoriesController(ICategoryRepository categoryService)
         {
-                this.categoryService = categoryService;
+            this.categoryService = categoryService;
         }
         public IActionResult Index()
         {
@@ -38,16 +38,16 @@ namespace BReports.Controllers
         {
             this.categoryService.Create(GetCategoryDataModel(category));
             return RedirectToAction("Index");
-            
+
         }
-      
+
         public IActionResult Edit(CategoryViewModel category)
         {
             this.categoryService.Update(GetCategoryDataModel(category));
             return RedirectToAction("Index");
         }
 
-       
+
         public IActionResult Delete(int Id)
         {
             this.categoryService.Delete(Id);

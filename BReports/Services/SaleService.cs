@@ -24,7 +24,6 @@ namespace BReports.Services
         public Sale GetById(int id)
         {
             return this.db.Sales.FirstOrDefault(x => x.Id == id);
-
         }
 
         public int GetCount()
@@ -40,9 +39,9 @@ namespace BReports.Services
         {
             var saleToUpdate = this.db.Sales.FirstOrDefault(x => x.Id == sale.Id);
             if (saleToUpdate == null) { return; }
-
-          //  saleToUpdate.Name = Sale.Name;
-
+            saleToUpdate.Amount = sale.Amount;
+            saleToUpdate.CustomerId = sale.CustomerId;
+            saleToUpdate.Description = sale.Description;
             this.db.SaveChanges();
 
         }
@@ -54,6 +53,5 @@ namespace BReports.Services
             saleToDelete.IsDeleted = true;
             this.db.SaveChanges();
         }
-
     }
 }

@@ -22,7 +22,6 @@ namespace BReports.Services
         public Category GetById(int id)
         {
             return this.db.Categories.FirstOrDefault(x => x.Id == id);
-
         }
 
         public int GetCount()
@@ -40,7 +39,6 @@ namespace BReports.Services
             if (categoryToUpdate == null) { return; }
 
             categoryToUpdate.Name = category.Name;
-
             this.db.SaveChanges();
 
         }

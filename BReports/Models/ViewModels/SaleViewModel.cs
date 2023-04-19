@@ -15,12 +15,8 @@ namespace BReports.Models.ViewModels
         public string Description { get; set; }
         public string CustomerId { get; set; }
         public DateTime SaleDate { get; set; }
-
         public bool IsDeleted { get; set; }
-
         public List<SelectListItem> ProductsList {get; set;}
-
         public List<SelectListItem> CategoriesList { get; set;}
-    
     }
 }

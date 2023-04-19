@@ -28,27 +28,25 @@ namespace BReports
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                   // Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
+                    options.UseSqlServer(
                     Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
             services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                 .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>(TokenOptions.DefaultProvider);
+                    .AddEntityFrameworkStores<ApplicationDbContext>()
+                    .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>(TokenOptions.DefaultProvider);
             services.AddTransient<ICategoryRepository, CategoryService>();
             services.AddTransient<IProductRepository, ProductService>();
             services.AddTransient<ISaleRepository, SaleService>();
             services.AddTransient<ILocationRepository, LocationService>();
             services.AddControllersWithViews();
             services.AddRazorPages();
-                   
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-           
+
             app.UseDeveloperExceptionPage();
             app.UseDatabaseErrorPage();
-          
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

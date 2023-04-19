@@ -11,8 +11,5 @@ namespace BReports.Models.DBModels
         public Location Location { get; set; }
         public IdentityRole Role { get; set; }
         public ICollection<Sale> Sales { get; set; }
-
-
-
     }
 }

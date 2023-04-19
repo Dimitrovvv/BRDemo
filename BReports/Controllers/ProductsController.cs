@@ -20,7 +20,7 @@ namespace BReports.Controllers
             this.productService = productService;
             this.categoryService = categoryService;
         }
-                       
+
         public IActionResult Index()
         {
             var products = this.productService.GetAll();
@@ -28,16 +28,10 @@ namespace BReports.Controllers
             var model = new ProductViewModelList
             {
                 List = GetProductViewModel(products)
-              
+
             };
             return View(model);
 
-        }
-           
-        public IActionResult ProductDetails(int productId)
-        {
-            var productDataModel = this.productService.GetById(productId);
-            return View(GetProductViewModel(productDataModel));
         }
 
         [HttpGet]
@@ -52,15 +46,15 @@ namespace BReports.Controllers
                 model.CategoriesList.Add(new SelectListItem { Text = category.Name, Value = category.Id.ToString() });
             }
             return View(model);
-        
         }
 
         [HttpPost]
-         public IActionResult Create(ProductViewModel product)
+        public IActionResult Create(ProductViewModel product)
         {
             this.productService.Create(GetProductDataModel(product));
             return RedirectToAction("Index");
         }
+
         [HttpGet]
         public IActionResult Edit(int productId)
         {
@@ -80,7 +74,6 @@ namespace BReports.Controllers
             }
 
             ProductViewModel productViewModel = GetProductViewModel(productDataModel);
-
             return View(productViewModel);
         }
 
@@ -89,7 +82,7 @@ namespace BReports.Controllers
         {
             this.productService.Delete(id);
             return RedirectToAction("Index");
-   
+
         }
 
         private Product GetProductDataModel(ProductViewModel product)

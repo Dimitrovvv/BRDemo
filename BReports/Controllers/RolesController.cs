@@ -10,16 +10,15 @@ namespace BReports.Controllers
     public class RolesController : Controller
     {
         public readonly RoleManager<IdentityRole> roleManager;
-       
+
 
         public RolesController(RoleManager<IdentityRole> roleManager)
         {
             this.roleManager = roleManager;
-         
         }
 
         [HttpGet]
-            public IActionResult Index()
+        public IActionResult Index()
         {
             var roles = roleManager.Roles;
             return View(roles);
@@ -49,7 +48,7 @@ namespace BReports.Controllers
             return View(model);
         }
         [HttpGet]
-        public async Task<IActionResult> Edit(string id) 
+        public async Task<IActionResult> Edit(string id)
         {
             var role = await roleManager.FindByIdAsync(id);
 
@@ -77,7 +76,7 @@ namespace BReports.Controllers
             else
             {
                 role.Name = model.Name;
-                var result =  await roleManager.UpdateAsync(role);
+                var result = await roleManager.UpdateAsync(role);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index");
@@ -88,7 +87,6 @@ namespace BReports.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(string id)
         {
-       
             var role = await roleManager.FindByIdAsync(id);
 
             if (role == null)
@@ -98,7 +96,7 @@ namespace BReports.Controllers
             }
             else
             {
-               
+
                 var result = await roleManager.DeleteAsync(role);
                 if (result.Succeeded)
                 {
@@ -109,9 +107,5 @@ namespace BReports.Controllers
                 return View("Index");
             }
         }
-
-
-
-
     }
 }
