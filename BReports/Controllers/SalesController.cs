@@ -33,7 +33,7 @@ namespace BReports.Controllers
         }
 
         [HttpGet]
-        public ActionResult Create()
+        public IActionResult Create()
         {
             var model = new SaleViewModel();
             var categoriesData = categoryService.GetAll();
@@ -54,21 +54,27 @@ namespace BReports.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(SaleViewModel sale)
+        public IActionResult Create(SaleViewModel sale)
         {
             this.saleService.Create(GetSaleDataModel(sale));
             return RedirectToAction("Index");
         }
-
-        public ActionResult Edit()
+        [HttpGet]
+        public IActionResult Edit(int saleId)
         {
-            return View();
+            var sale = this.saleService.GetById(saleId);
+            var model = GetSaleViewModel(sale);
+            if (sale == null)
+            {
+                return NotFound();
+            }
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult Edit(SalesViewModel sale)
+        public IActionResult Edit(SaleViewModel sale)
         {
-            this.saleService.Update(sale);
+            this.saleService.Update(GetSaleDataModel(sale));
             return RedirectToAction("Index");
         }
 

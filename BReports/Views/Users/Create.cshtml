@@ -1,7 +1,7 @@
 ﻿@model UserViewModel
 
-<button onclick="history.back()" class="btn btn-outline-info my-3">Go Back</button>
-<h3>Add user</h3>
+<button onclick="history.back()" class="btn btn-outline-info my-3">Назад</button>
+<h3>Добавяне на потребител</h3>
 
 <form asp-controller="Users" asp-action="Create">
     <label class="col-form-label" asp-for="FirstName"></label>
@@ -32,5 +32,5 @@
         <input type="password" asp-for="ConfirmPassword" class="form-control" />
         <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
     </div>
-    <button class="btn btn-primary mt-3">Add user</button>
+    <button class="btn btn-primary mt-3">Запази</button>
 </form>

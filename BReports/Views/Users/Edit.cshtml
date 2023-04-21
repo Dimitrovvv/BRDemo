@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Edit user";
 }
-<h1 class="mb-2">Edit user</h1>
+<h1 class="mb-2">Редактиране на потребител</h1>
 
 <form method="post">
     <div class="form-group">
@@ -29,10 +29,10 @@
     </div>
     <div class="orm-group mb-3">
         <label class="form-label">Select location</label>
-        <select class="form-select" asp-for="Location.Name" asp-items="Model.LocationList"></select>
+        <select class="form-control" asp-for="Location.Name" asp-items="Model.LocationList"></select>
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-outline-dark">Запази </button>
+        <button type="submit" class="btn btn-info">Запази </button>
         <a asp-action="Index" class="btn btn-primary">Отказ</a>
     </div>
 

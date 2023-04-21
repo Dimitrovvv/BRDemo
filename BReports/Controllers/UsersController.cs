@@ -120,7 +120,6 @@ namespace BReports.Controllers
                 return View(model);
             };
 
-
         }
         [HttpPost]
         public async Task<IActionResult> Delete(string id)

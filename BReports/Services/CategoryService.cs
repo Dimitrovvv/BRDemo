@@ -16,7 +16,10 @@ namespace BReports.Services
         }
         public List<Category> GetAll()
         {
-            return this.db.Categories.Where(category => !category.IsDeleted).ToList();
+            return this.db.Categories
+                .Where(category => !category.IsDeleted)
+                .OrderByDescending(category => category.Id)
+                .ToList();
         }
 
         public Category GetById(int id)

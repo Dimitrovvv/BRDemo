@@ -1,32 +1,32 @@
 ﻿@model SaleViewModel
 
-<h3 class="mb-5">Добави продажба</h3>
+<h3 class="my-4">Добави продажба</h3>
 <form method="post" asp-controller="Sales" asp-action="Create">
       <div class="mb-3">
-        <label class="form-label">Select category</label>
+        <label class="form-label">Категория</label>
         <select class="form-control" asp-items="Model.CategoriesList" asp-for="Category"></select>
     </div>
     <div class="mb-3">
-        <label class="form-label">Select product</label>
+        <label class="form-label">Продукт</label>
         <select class="form-control" asp-items="Model.ProductsList" asp-for="Product"></select>
     </div>
     <div class="mb-3">
-        <label class="col-form-label" asp-for="Amount"></label>
+        <label class="col-form-label" asp-for="Amount">Сума</label>
         <input class="form-control" asp-for="Amount" />
     </div>
     <div class="mb-3">
-        <label class="col-form-label" asp-for="Description"></label>
+        <label class="col-form-label" asp-for="Description">Описание</label>
         <input class="form-control" asp-for="Description" />
     </div>
     <div class="mb-3">
-        <label class="col-form-label" asp-for="CustomerId"></label>
+        <label class="col-form-label" asp-for="CustomerId">Клиентски номер</label>
         <input class="form-control" asp-for="CustomerId" />
     </div>
     <div class="mb-3">
-        <label class="col-form-label" asp-for="SaleDate"></label>
+        <label class="col-form-label" asp-for="SaleDate">Дата</label>
         <input type="date" class="form-control" asp-for="SaleDate" asp-format="{0:yyyy-MM-ddTHH:mm}" value="@DateTime.Now" />
     </div>
-    <button class="btn btn-primary mt-3">Запиши</button>
+    <button class="btn btn-info mt-3">Запази</button>
 </form>
 
 

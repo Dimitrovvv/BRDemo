@@ -33,6 +33,7 @@ namespace BReports.Controllers
             return View();
         }
 
+
         [HttpPost]
         public IActionResult Create(CategoryViewModel category)
         {
@@ -41,6 +42,19 @@ namespace BReports.Controllers
 
         }
 
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var category = this.categoryService.GetById(id);
+            var model = GetCategoryViewModel(category);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            return View(model);
+        }
+
+        [HttpPost]
         public IActionResult Edit(CategoryViewModel category)
         {
             this.categoryService.Update(GetCategoryDataModel(category));

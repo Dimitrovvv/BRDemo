@@ -38,16 +38,21 @@ namespace BReports.Services
             if (locationToUpdate == null) { return; }
 
             locationToUpdate.Name = location.Name;
+            locationToUpdate.Region = location.Region;
             this.db.SaveChanges();
 
         }
         public void Delete(int id)
         {
-            var locationToDelete = this.db.Locations.FirstOrDefault(x => x.Id == id);
-            if (locationToDelete == null) { return; }
+          //  var locationToDelete = this.db.Locations.FirstOrDefault(x => x.Id == id);
+         //   if (locationToDelete == null) { return; }
 
-            locationToDelete.IsDeleted = true;
-            this.db.SaveChanges();
+           this.db.Locations.Remove(db.Locations.FirstOrDefault(x => x.Id == id));
+            db.SaveChanges();
+         //   locationToDelete.IsDeleted = true;
+          //  this.db.SaveChanges();
+
+           
         }
     }
 }

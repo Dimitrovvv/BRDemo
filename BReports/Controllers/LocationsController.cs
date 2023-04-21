@@ -2,6 +2,7 @@
 using BReports.Models.ViewModels;
 using BReports.Services;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -34,40 +35,29 @@ namespace BReports.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
 
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var location = this.locationService.GetById(id);
+            var model = GetLocationViewModel(location);
+            if (location == null)
+            {
+                return NotFound();
+            }
+            return View(model);
+        }
         [HttpPost]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Edit(LocationViewModel location)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            this.locationService.Update(GetLocationDataModel(location));
+            return RedirectToAction(nameof(Index));
         }
 
-        public ActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            this.locationService.Delete(id);
+            return RedirectToAction("Index");
         }
 
         private Location GetLocationDataModel(LocationViewModel location)

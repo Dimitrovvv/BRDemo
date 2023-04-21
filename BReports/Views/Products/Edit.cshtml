@@ -1,11 +1,11 @@
 ﻿@model ProductViewModel
 
-<button onclick="history.back()" class="btn btn-outline-info my-3">Go Back</button>
+<button onclick="history.back()" class="btn btn-outline-info my-3">Назад</button>
 <h3>Edit category</h3>
 
 <form method="post" asp-controller="Products" asp-action="Edit">
     <label asp-for="Name" class="form-label"></label>
-    <input asp-for="Name" class="form-control" placeholder="@Model.Name">
+    <input asp-for="Name" class="form-control" placeholder="@Model?.Name">
     <span asp-validation-for="Name" class="text-danger"></span>
-    <button class="btn btn-primary mt-3">Edit product</button>
+    <button class="btn btn-primary mt-3">Запази</button>
 </form>

@@ -58,33 +58,26 @@ namespace BReports.Controllers
         [HttpGet]
         public IActionResult Edit(int productId)
         {
-            var productDataModel = this.productService.GetById(productId);
-
-            return View(GetProductViewModel(productDataModel));
+            var product = this.productService.GetById(productId);
+            var model = GetProductViewModel(product);
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult Edit(ProductViewModel model)
+        public IActionResult Edit(ProductViewModel product)
         {
-            Product productDataModel = this.productService.GetById(model.Id);
 
-            if (productDataModel == null)
-            {
-                return NotFound();
-            }
+            this.productService.Update(GetProductDataModel(product));
+            return RedirectToAction("Index");
 
-            ProductViewModel productViewModel = GetProductViewModel(productDataModel);
-            return View(productViewModel);
+          
         }
 
-        [HttpPost]
         public IActionResult Delete(int id)
         {
             this.productService.Delete(id);
             return RedirectToAction("Index");
-
         }
-
         private Product GetProductDataModel(ProductViewModel product)
         {
             return new Product
